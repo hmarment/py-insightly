@@ -4,6 +4,7 @@ from __future__ import with_statement, print_function, absolute_import
 
 from insightly import InsightlyBase
 from insightly.compat import force_str
+from insightly.custom_field import CustomField
 from insightly.exceptions import DoesNotExist
 from insightly.link import ContactLink, Link
 from insightly.models import Address, DatetimeHandler
@@ -135,7 +136,7 @@ class Contact(InsightlyBase):
                           assistant_name=json_obj['ASSISTANT_NAME'], assistant_phone=json_obj['PHONE_ASSISTANT'],
                           deletable=json_obj['CAN_DELETE'], editable=json_obj['CAN_EDIT'],
                           contact_links=[ContactLink.from_json(obj) for obj in json_obj['CONTACTLINKS']],
-                          custom_fields=json_obj['CUSTOMFIELDS'],
+                          custom_fields=[CustomField.from_json(obj) for obj in json_obj['CUSTOMFIELDS']],
                           dates=json_obj['DATES'], created=json_obj['DATE_CREATED_UTC'],
                           last_updated=json_obj['DATE_UPDATED_UTC'], image_url=json_obj['IMAGE_URL'],
                           links=[Link.from_json(obj) for obj in json_obj['LINKS']],

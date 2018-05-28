@@ -4,6 +4,7 @@ from __future__ import with_statement, print_function, absolute_import
 
 from insightly import InsightlyBase
 from insightly.compat import force_str
+from insightly.custom_field import CustomField
 from insightly.exceptions import DoesNotExist
 from insightly.link import Link
 from insightly.models import DatetimeHandler
@@ -113,7 +114,7 @@ class Opportunity(InsightlyBase):
                                   deletable=json_obj['CAN_DELETE'],
                                   editable=json_obj['CAN_EDIT'],
                                   category_id=json_obj['CATEGORY_ID'],
-                                  customfields=json_obj['CUSTOMFIELDS'],
+                                  customfields=[CustomField.from_json(obj) for obj in json_obj['CUSTOMFIELDS']],
                                   forecast_close_date=json_obj['FORECAST_CLOSE_DATE'],
                                   actual_close_date=json_obj['ACTUAL_CLOSE_DATE'],
                                   image_url=json_obj['IMAGE_URL'],
