@@ -1,0 +1,218 @@
+
+BaseUrl: https://api.insight.ly/v{version_number}/
+
+Contacts:
+  Endpoints:
+    Search:
+      Url: /Contacts/Search?
+      Method: GET
+    GetAll:
+      Url: /Contacts?skip={skip}&top={top}
+      Method: GET
+      DefaultQueryParameters:
+        Top: 500
+    Add:
+      Url: /Contacts
+      Method: POST
+    Update:
+      Url: /Contacts
+      Method: PUT
+    Delete:
+      Url: /Contacts/{id}
+      Method: DELETE
+    Get:
+      Url: /Contacts/{id}
+      Method: GET
+
+  AcceptedFields:
+    CONTACT_ID:
+    ORGANISATION_ID:
+    DEFAULT_LINKED_ORGANISATION:
+    SALUTATION:
+    FIRST_NAME:
+    LAST_NAME:
+    DATE_OF_BIRTH:
+    EMAIL_ADDRESS:
+    TITLE:
+    BACKGROUND:
+    ADDRESS_MAIL_STREET:
+    ADDRESS_MAIL_CITY:
+    ADDRESS_MAIL_POSTCODE:
+    ADDRESS_MAIL_STATE:
+    ADDRESS_MAIL_COUNTRY:
+    ADDRESS_OTHER_STREET:
+    ADDRESS_OTHER_CITY:
+    ADDRESS_OTHER_POSTCODE:
+    ADDRESS_OTHER_STATE:
+    ADDRESS_OTHER_COUNTRY:
+    ASSISTANT_NAME:
+    PHONE_ASSISTANT:
+    CAN_DELETE:
+    CAN_EDIT:
+    CONTACTLINKS:
+    CUSTOMFIELDS:
+    DATE_CREATED_UTC:
+    DATE_UPDATED_UTC:
+    DATES:
+    IMAGE_URL:
+    LINKS:
+    OWNER_USER_ID:
+    PHONE:
+    PHONE_FAX:
+    PHONE_HOME:
+    PHONE_MOBILE:
+    PHONE_OTHER:
+    SOCIAL_FACEBOOK:
+    SOCIAL_LINKEDIN:
+    SOCIAL_TWITTER:
+    TAGS:
+    VISIBLE_TEAM_ID:
+    VISIBLE_TO:
+    VISIBLE_USER_IDS:
+
+Opportunities:
+  Endpoints:
+    Search:
+      Url: /Opportunities/Search?
+      Method: GET
+    GetAll:
+      Url: /Opportunities?skip={skip}&top={top}
+      Method: GET
+      DefaultQueryParameters:
+        Top: 500
+    Add:
+      Url: /Opportunities
+      Method: POST
+    Update:
+      Url: /Opportunities
+      Method: PUT
+    Delete:
+      Url: /Opportunities/{id}
+      Method: DELETE
+    Get:
+      Url: /Opportunities/{id}
+      Method: GET
+
+  AcceptedFields:
+    OPPORTUNITY_ID:
+    OPPORTUNITY_NAME:
+    OPPORTUNITY_DETAILS:
+    ORGANISATION_ID:
+    OWNER_USER_ID:
+    BID_AMOUNT:
+    BID_CURRENCY:
+    BID_DURATION:
+    BID_TYPE:
+    CAN_DELETE:
+    CAN_EDIT:
+    CATEGORY_ID:
+    CUSTOMFIELDS:
+    FORECAST_CLOSE_DATE:
+    ACTUAL_CLOSE_DATE:
+    IMAGE_URL:
+    LINKS:
+    OPPORTUNITY_STATE:
+    OPPORTUNITY_STATE_REASON_ID:
+    OPPORTUNITY_VALUE:
+    PIPELINE_ID:
+    PROBABILITY:
+    RESPONSIBLE_USER_ID:
+    STAGE_ID:
+    TAGS:
+    VISIBLE_TEAM_ID:
+    VISIBLE_TO:
+    VISIBLE_USER_IDS:
+    DATE_CREATED_UTC:
+    DATE_UPDATED_UTC:
+
+Organisations:
+  Endpoints:
+    Search:
+      Url: /Organisations/Search?
+      Method: GET
+    GetAll:
+      Url: /Organisations?skip={skip}&top={top}
+      Method: GET
+      DefaultQueryParameters:
+        Top: 500
+    Add:
+      Url: /Organisations
+      Method: POST
+    Update:
+      Url: /Organisations
+      Method: PUT
+    Delete:
+      Url: /Organisations/{id}
+      Method: DELETE
+    Get:
+      Url: /Organisations/{id}
+      Method: GET
+    AddLink:
+      Url: /Organisations/{id}/Links
+      Method: POST
+    UpdateLink:
+      Url: /Organisations/{id}/Links
+      Method: PUT
+    DeleteLink:
+      Url: /Organisations/{id}/Links
+      Method: DELETE
+    AddOrganisationLink:
+      Url: /Organisations/{id}/OrganisationLinks
+      Method: POST
+    UpdateOrganisationLink:
+      Url: /Organisations/{id}/OrganisationLinks
+      Method: PUT
+    DeleteOrganisationLink:
+      Url: /Organisations/{id}/OrganisationLinks
+      Method: DELETE
+    
+
+  AcceptedFields:
+    ORGANISATION_ID:
+    ORGANISATION_NAME:
+    ADDRESS_BILLING_CITY:
+    ADDRESS_BILLING_COUNTRY:
+    ADDRESS_BILLING_POSTCODE:
+    ADDRESS_BILLING_STATE:
+    ADDRESS_BILLING_STREET:
+    ADDRESS_SHIP_CITY:
+    ADDRESS_SHIP_COUNTRY:
+    ADDRESS_SHIP_POSTCODE:
+    ADDRESS_SHIP_STATE:
+    ADDRESS_SHIP_STREET:
+    BACKGROUND:
+    CAN_DELETE:
+    CAN_EDIT:
+    CUSTOMFIELDS:
+    DATES:
+    DATE_CREATED_UTC:
+    DATE_UPDATED_UTC:
+    EMAILDOMAINS:
+    IMAGE_URL:
+    LINKS:
+    ORGANISATIONLINKS:
+    OWNER_USER_ID:
+    PHONE:
+    PHONE_FAX:
+    SOCIAL_FACEBOOK:
+    SOCIAL_LINKEDIN:
+    SOCIAL_TWITTER:
+    TAGS:
+    VISIBLE_TEAM_ID:
+    VISIBLE_TO:
+    VISIBLE_USER_IDS:
+    WEBSITE:
+
+Relationships:
+  Endpoints:
+    GetAll:
+      Url: /Relationships
+      Method: GET
+
+Users:
+  Endpoints:
+    GetAll:
+      Url: /Users
+      Method: GET
+
+

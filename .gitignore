@@ -1,0 +1,6 @@
+.env
+env/*
+*.pyc
+insightly/*.pyc
+insightly/models/*.pyc
+insightly/helpers/*.pyc
