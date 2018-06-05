@@ -302,3 +302,48 @@ class Opportunity(InsightlyBase):
                                         post_args=post_args)
         # self.fetch()  # update current model
         return Link.from_json(json_obj)
+
+    def get_custom_field_by_field_name(self, field_name):
+        """Get a custom for this opportunity from the Insightly Field Name - note: these are defined by adsquare in the
+        adsquare Insightly account.
+
+        :field_name: the field name for the custom field e.g. DESTINATION_PARTNER__c, note: these are always suffixed by
+                     '__c'.
+        :return: the custom field
+        :rtype: CustomField
+        """
+
+        for custom_field in self.CUSTOMFIELDS:
+            if custom_field.CUSTOM_FIELD_ID == field_name:
+                return custom_field
+
+
+class OpportunityCategory(InsightlyBase):
+    """
+    Class representing an Insightly Opportunity Category.
+    """
+
+    def __init__(self, category_id=None, category_name=None, active=None, background_color=None):
+        super(OpportunityCategory, self).__init__()
+        self.CATEGORY_ID = category_id
+        self.CATEGORY_NAME = category_name
+        self.ACTIVE = active
+        self.BACKGROUND_COLOR = background_color
+
+    @classmethod
+    def from_json(cls, json_obj=None):
+        """
+        Deserialize the opportunity category json object to an Opportunity Category object
+
+        :json_obj: the opportunity json object
+        """
+
+        opportunity_category = OpportunityCategory(category_id=json_obj['CATEGORY_ID'],
+                                                   category_name=json_obj['CATEGORY_NAME'],
+                                                   active=json_obj['ACTIVE'],
+                                                   background_color=json_obj['BACKGROUND_COLOR'])
+
+        return opportunity_category
+
+    def __repr__(self):
+        return force_str(u'<Opportunity Category {}  {}>'.format(self.CATEGORY_ID, self.CATEGORY_NAME))

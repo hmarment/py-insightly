@@ -125,6 +125,16 @@ Opportunities:
     DATE_CREATED_UTC:
     DATE_UPDATED_UTC:
 
+
+OpportunityCategories:
+  Endpoints:
+    GetAll:
+      Url: /OpportunityCategories?skip={skip}&top={top}
+      Method: GET
+      DefaultQueryParameters:
+        Top: 500
+
+
 Organisations:
   Endpoints:
     Search:

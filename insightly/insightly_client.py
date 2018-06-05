@@ -8,8 +8,9 @@ import yaml
 import base64
 import logging
 
+from insightly.compat import force_str
 from insightly.contact import Contact
-from insightly.opportunity import Opportunity
+from insightly.opportunity import Opportunity, OpportunityCategory
 from insightly.organisation import Organisation
 from insightly.relationship import Relationship
 from insightly.user import User
@@ -200,6 +201,32 @@ class InsightlyClient(object):
         logging.info("Deleted Opportunity {id}".format(id=opportunity_id))
         return None
 
+    def list_opportunity_categories(self):
+        """
+        Returns all opportunities categories available for Insightly opportunities
+
+        :return: a list of Python objects representing the Insightly Opportunity Categories.
+        :rtype: list of OpportunityCategory
+
+        Each Opportunity has the following noteworthy attributes:
+            - CATEGORY_ID: the Opportunity Category's identifier
+            - CATEGORY_NAME: Name of the Opportunity Category
+        """
+
+        top = Config["OpportunityCategories"]["Endpoints"]["GetAll"]["DefaultQueryParameters"]["Top"]
+        skip = 0
+
+        page = self.get_json(Config["OpportunityCategories"]["Endpoints"]["GetAll"]["Url"].format(skip=skip, top=top),
+                             http_method=Config["OpportunityCategories"]["Endpoints"]["GetAll"]["Method"])
+        json_obj = [] + page
+        while len(page) > 0:
+            skip += top
+            page = self.get_json(Config["OpportunityCategories"]["Endpoints"]["GetAll"]["Url"].format(skip=skip, top=top),
+                                 http_method=Config["OpportunityCategories"]["Endpoints"]["GetAll"]["Method"])
+            json_obj += page
+
+        return [OpportunityCategory.from_json(json_obj=obj) for obj in json_obj]
+
     def list_organisations(self, organisation_filter=None):
         """
         Returns all organisations for your Insightly account
@@ -348,7 +375,8 @@ class InsightlyClient(object):
 
         # API Key authentication
         headers['Content-Type'] = 'application/json'
-        headers['Authorization'] = "Basic {}".format(base64.b64encode("{}:".format(self.api_key)))
+        headers['Authorization'] = "Basic {}".format(base64.b64encode(bytes("{}:".format(self.api_key), 'utf-8'))
+                                                     .decode())
 
         # perform the HTTP requests, if possible uses OAuth authentication
         response = self.http_service.request(http_method, url, params=query_params,

@@ -151,7 +151,8 @@ class Contact(InsightlyBase):
         return contact
 
     def __repr__(self):
-        return force_str(u'<Contact {}  {}>'.format(self.CONTACT_ID, "{} {}".format(self.FIRST_NAME, self.LAST_NAME)))
+        return force_str(u'<Contact {}  {}>'.format(self.CONTACT_ID, force_str("{} {}".format(self.FIRST_NAME,
+                                                                                              self.LAST_NAME))))
 
     def to_json(self):
         """ Strip out any non-insightly parameters """
@@ -161,7 +162,7 @@ class Contact(InsightlyBase):
     def fetch(self):
         """Fetch all attributes for this Contact"""
         json_obj = self.client.get_json(Config["Contacts"]["Endpoints"]["Get"]["Url"]
-                                        .format(id=self.CONTACT_ID),
+                                        .format(id=force_str(self.CONTACT_ID)),
                                         http_method=Config["Contacts"]["Endpoints"]["Get"]["Method"])
         self.from_json(json_obj=json_obj)
 
@@ -177,7 +178,7 @@ class Contact(InsightlyBase):
             self.CONTACT_ID = json_obj["CONTACT_ID"]
         else:  # update existing contact
             json_obj = self.client.get_json(
-                Config["Contacts"]["Endpoints"]["Update"]["Url"].format(id=self.CONTACT_ID),
+                Config["Contacts"]["Endpoints"]["Update"]["Url"].format(id=force_str(self.CONTACT_ID)),
                 http_method=Config["Contacts"]["Endpoints"]["Update"]["Method"],
                 post_args=json.loads(self.to_json()))
             # Set new data from Insightly, includes any updates
@@ -215,7 +216,7 @@ class Contact(InsightlyBase):
             post_args['DETAILS'] = details
 
         json_obj = self.client.get_json(Config["Contacts"]["Endpoints"]["AddContactLink"]["Url"]
-                                        .format(id=self.CONTACT_ID),
+                                        .format(id=force_str(self.CONTACT_ID)),
                                         http_method=Config["Contacts"]["Endpoints"]["AddContactLink"]["Method"],
                                         post_args=post_args)
         # self.fetch()  # update current model
@@ -251,7 +252,7 @@ class Contact(InsightlyBase):
             post_args['DETAILS'] = contact_link.DETAILS
 
         json_obj = self.client.get_json(Config["Contacts"]["Endpoints"]["UpdateContactLink"]["Url"]
-                                        .format(id=self.CONTACT_ID),
+                                        .format(id=force_str(self.CONTACT_ID)),
                                         http_method=Config["Contacts"]["Endpoints"]["UpdateContactLink"][
                                             "Method"],
                                         post_args=post_args)
@@ -292,7 +293,7 @@ class Contact(InsightlyBase):
             post_args['DETAILS'] = details
 
         json_obj = self.client.get_json(Config["Contacts"]["Endpoints"]["AddLink"]["Url"]
-                                        .format(id=self.CONTACT_ID),
+                                        .format(id=force_str(self.CONTACT_ID)),
                                         http_method=Config["Contacts"]["Endpoints"]["AddLink"]["Method"],
                                         post_args=post_args)
         # self.fetch()  # update current model
@@ -327,7 +328,7 @@ class Contact(InsightlyBase):
             post_args['DETAILS'] = link.DETAILS
 
         json_obj = self.client.get_json(Config["Contacts"]["Endpoints"]["UpdateLink"]["Url"]
-                                        .format(id=self.CONTACT_ID),
+                                        .format(id=force_str(self.CONTACT_ID)),
                                         http_method=Config["Contacts"]["Endpoints"]["UpdateLink"]["Method"],
                                         post_args=post_args)
         # self.fetch()  # update current model
@@ -352,7 +353,7 @@ class Contact(InsightlyBase):
             post_args['DETAILS'] = details
 
         json_obj = self.client.get_json(Config["Contacts"]["Endpoints"]["AddLink"]["Url"]
-                                        .format(id=self.CONTACT_ID),
+                                        .format(id=force_str(self.CONTACT_ID)),
                                         http_method=Config["Contacts"]["Endpoints"]["AddLink"]["Method"],
                                         post_args=post_args)
         # self.fetch()  # update current model
@@ -387,7 +388,7 @@ class Contact(InsightlyBase):
             post_args['DETAILS'] = link.DETAILS
 
         json_obj = self.client.get_json(Config["Contacts"]["Endpoints"]["UpdateLink"]["Url"]
-                                        .format(id=self.CONTACT_ID),
+                                        .format(id=force_str(self.CONTACT_ID)),
                                         http_method=Config["Contacts"]["Endpoints"]["UpdateLink"]["Method"],
                                         post_args=post_args)
         # self.fetch()  # update current model
