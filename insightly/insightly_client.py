@@ -38,6 +38,14 @@ class InsightlyClient(object):
         self.version = version
         self.http_service = http_service
 
+    @classmethod
+    def from_user_input(cls):
+
+        api_key = input("API Key: ")
+        insightly_client = InsightlyClient(api_key)
+
+        return insightly_client
+
     def list_contacts(self, contact_filter=None):
         """
         Returns all contacts for your Insightly account
