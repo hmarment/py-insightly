@@ -75,7 +75,7 @@ class User(InsightlyBase):
         self.__dict__.update(state)
 
     def __repr__(self):
-        return force_str(u'<User {}  {}>'.format(self.USER_ID, "{} {}".format(self.FIRST_NAME, self.LAST_NAME)))
+        return force_str(u'<User {}  {} {}>'.format(self.USER_ID, self.FIRST_NAME, self.LAST_NAME))
 
     def to_json(self):
         """ Strip out any non-insightly parameters """
