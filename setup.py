@@ -7,7 +7,7 @@ with open('requirements.txt') as f:
 
 setup(
     name="lib-py-insightly",
-    version="0.0.3",
+    version="0.0.4",
 
     description='Python wrapper around the Insightly API',
     long_description=open('README.md').read(),
