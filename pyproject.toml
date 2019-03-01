@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "insightly"
-version = "0.0.5"
+version = "0.0.6"
 description = "Python wrapper for Insightly APIs."
 authors = ["Henry Marment <henry@adsquare.com>"]
 
