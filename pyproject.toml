@@ -8,7 +8,7 @@ authors = ["Henry Marment <henry@adsquare.com>"]
 python = "^3.7"
 requests = "^2.21"
 jsonpickle = "^1.1"
-pyyaml = "^3.13"
+pyyaml = "^5.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
