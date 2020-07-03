@@ -26,7 +26,6 @@ var/
 .installed.cfg
 *.egg
 pip-wheel-metadata
-poetry.lock
 
 # Installer logs
 pip-log.txt
