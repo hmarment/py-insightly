@@ -21,7 +21,7 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s')
 config_file_path = os.path.join(os.path.dirname(__file__), "config.yaml")
 
 with open(config_file_path) as config_file:
-    Config = yaml.load(config_file)
+    Config = yaml.load(config_file, Loader=yaml.FullLoader)
 
 
 class InsightlyClient(object):
